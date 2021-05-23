@@ -2974,6 +2974,9 @@ See also `helpful-max-buffers'."
 ;; TODO: find a cleaner solution.
 (defvar bookmark-make-record-function)
 
+(defun helpful--revert-buffer (&optional ignore-auto noconfirm)
+  (helpful-update))
+
 (defun helpful--add-support-for-org-links ()
   "Improve support for org \"help\" links through helpful."
   (helpful--support-storing-org-links)
@@ -3023,7 +3026,10 @@ See also `helpful-max-buffers'."
   ;; helpful are loaded. To avoid using `eval-after-load' (which is
   ;; only recommended in user init files), the function is called each
   ;; time the major mode is used.
-  (helpful--add-support-for-org-links))
+  (helpful--add-support-for-org-links)
+
+  ;; Enable users to reload the page with `revert-buffer`.
+  (set revert-buffer-function #'helpful--revert-buffer))
 
 (provide 'helpful)
 ;;; helpful.el ends here
