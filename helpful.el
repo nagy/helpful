@@ -3011,6 +3011,7 @@ See also `helpful-max-buffers'."
   (helpful-symbol (intern link)))
 
 (define-derived-mode helpful-mode special-mode "Helpful"
+  :interactive nil
   "Major mode for *Helpful* buffers."
   (add-hook 'xref-backend-functions #'elisp--xref-backend nil t)
 
