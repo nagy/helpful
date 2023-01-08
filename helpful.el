@@ -2505,6 +2505,7 @@ state of the current symbol."
     (goto-char (point-min))
     (forward-line (1- start-line))
     (forward-char start-column)
+    (set-buffer-modified-p nil)
     (setq helpful--first-display nil)
 
     (when opened
